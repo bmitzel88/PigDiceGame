@@ -58,7 +58,7 @@ function rollDie() {
         currTotal += roll;
     }
     //set the die roll to value player rolled
-    document.getElementById("die-roll").value = roll.toString();
+    document.getElementById("die").value = roll.toString();
     //display current total on form
     document.getElementById("total").value = currTotal.toString();
 }
