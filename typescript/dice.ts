@@ -5,12 +5,15 @@ function generateRandomValue(minValue:number, maxValue:number):number{
 
 
 function changePlayers():void{
+    console.log("Changing players");
+    const currentPlayerElement = document.getElementById("current")!;
     let currentPlayerName = (<HTMLElement>document.getElementById("current")).innerText;
     let player1Name = (<HTMLInputElement>document.getElementById("player1")).value;
     let player2Name = (<HTMLInputElement>document.getElementById("player2")).value;
 
-    //swap from player to player by comparing current name to player names
-    //set currentPlayerName to the next player
+    // switch current player's name
+    currentPlayerName = currentPlayerName === player1Name ? player2Name : player1Name;
+    currentPlayerElement.textContent = currentPlayerName;
 }
 
 window.onload = function(){
