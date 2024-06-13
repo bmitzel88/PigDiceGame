@@ -21,8 +21,8 @@ window.onload = function () {
 };
 function createNewGame() {
     //set player 1 and player 2 scores to 0
-    document.getElementById("player1-score").textContent = "0";
-    document.getElementById("player2-score").textContent = "0";
+    document.getElementById("score1").textContent = "0";
+    document.getElementById("score2").textContent = "0";
     //verify each player has a name
     const player1Element = document.getElementById("player1");
     const player2Element = document.getElementById("player2");
@@ -64,9 +64,38 @@ function rollDie() {
 }
 function holdDie() {
     //get the current turn total
+    const totalElement = document.getElementById("total");
+    let currTotal = parseInt(totalElement.value);
     //determine who the current player is
+    const currentPlayerElement = document.getElementById("current");
+    let currentPlayerName = currentPlayerElement.textContent.trim();
+    const player1Element = document.getElementById("player1");
+    const player2Element = document.getElementById("player2");
+    const player1ScoreElement = document.getElementById("score1");
+    const player2ScoreElement = document.getElementById("score2");
     //add the current turn total to the player's total score
+    if (currentPlayerName === player1Element.value) {
+        let player1Score = parseInt(player1ScoreElement.textContent);
+        player1Score += currTotal;
+        player1ScoreElement.textContent = player1Score.toString();
+        // Check if player 1 wins
+        if (player1Score >= 100) {
+            alert(player1Element.value + " wins!");
+            return;
+        }
+    }
+    else {
+        let player2Score = parseInt(player2ScoreElement.textContent);
+        player2Score += currTotal;
+        player2ScoreElement.textContent = player2Score.toString();
+        // Check if Player 2 wins
+        if (player2Score >= 100) {
+            alert(player2Element.value + " wins!");
+            return;
+        }
+    }
     //reset the turn total to 0
+    totalElement.value = "0";
     //change players
     changePlayers();
 }
