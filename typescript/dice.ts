@@ -56,16 +56,25 @@ function rollDie():void{
     let currTotal = parseInt((<HTMLInputElement>document.getElementById("total")).value);
     
     //roll the die and get a random value 1 - 6 (use generateRandomValue function)
+    const roll = generateRandomValue(1, 6);
 
     //if the roll is 1
-    //  change players
-    //  set current total to 0
-    
-    //if the roll is greater than 1
-    //  add roll value to current total
+    if (roll == 1) {
+        //  Change players
+        changePlayers();
+        // Set current total to 0
+        currTotal = 0;
+    } else {
+        //if the roll is greater than 1
+        //  add roll value to current total
+        currTotal += roll;
+    }
 
     //set the die roll to value player rolled
+    (document.getElementById("die-roll") as HTMLInputElement).value = roll.toString();
+
     //display current total on form
+    (document.getElementById("total") as HTMLInputElement).value = currTotal.toString();
 }
 
 function holdDie():void{
