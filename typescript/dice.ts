@@ -27,13 +27,25 @@ window.onload = function(){
 
 function createNewGame(){
     //set player 1 and player 2 scores to 0
+    (document.getElementById("player1-score") as HTMLElement).textContent = "0";
+    (document.getElementById("player2-score") as HTMLElement).textContent = "0";
 
     //verify each player has a name
+    const player1Element = document.getElementById("player1") as HTMLInputElement;
+    const player2Element = document.getElementById("player2") as HTMLInputElement;
+    const player1Name = player1Element.value;
+    const player2Name = player2Element.value;
+
     //if both players don't have a name display error
+    if (player1Name === "" || player2Name === "") {
+        alert("Both players must have names");
+        return;
+    }
 
     //if both players do have a name start the game!
     (<HTMLElement>document.getElementById("turn")).classList.add("open");
     (<HTMLInputElement>document.getElementById("total")).value = "0";
+
     //lock in player names and then change players
     (<HTMLInputElement>document.getElementById("player1")).setAttribute("disabled", "disabled");
     (<HTMLInputElement>document.getElementById("player2")).setAttribute("disabled", "disabled");
