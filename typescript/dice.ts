@@ -1,9 +1,6 @@
 function generateRandomValue(minValue:number, maxValue:number):number{
     var random = Math.random();
-    
-    //TODO: use random to generate a number between min and max
-
-    return random;
+    return Math.floor(random * (maxValue - minValue + 1)) + minValue;
 }
 
 
